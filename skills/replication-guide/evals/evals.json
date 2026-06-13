@@ -1,0 +1,26 @@
+{
+  "skill_name": "replication-guide",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "请帮我总结 src/tools/FileEditTool 这个文件夹的源码工程实现细节，输出到该文件夹的 detail.md，要让我能照着重写一份功能等价的代码。",
+      "expected_output": "在 src/tools/FileEditTool/detail.md 生成约 500-1000 行的 detail.md，覆盖文件分工、对外契约、关键工程细节、反模式、复刻清单。重点要捕获：编辑前的 stale-read 检测、行尾/编码探测、并发写保护、与 BashTool 共享的 utils、permission 检查路径。所有引用都用 [file:line](path#L) 格式。",
+      "files": [],
+      "notes": "中型文件夹（1812 行），策略 B"
+    },
+    {
+      "id": 2,
+      "prompt": "我打算自己写一个 agent，想借鉴 src/tools/MCPTool 的实现。麻烦把这块代码的工程细节系统性整理一下，我只看你的总结就要能复刻出功能一样的实现。",
+      "expected_output": "在 src/tools/MCPTool/detail.md 生成约 500-800 行 detail.md。重点捕获：MCP 协议握手流程、tool dispatch、connection 状态机、错误处理与重试、与 SDK 的边界。",
+      "files": [],
+      "notes": "中小型（1086 行），策略 A/B 边界"
+    },
+    {
+      "id": 3,
+      "prompt": "解析 src/tools/AgentTool 的源码细节，写一份照着能复刻的指南。",
+      "expected_output": "在 src/tools/AgentTool/detail.md 生成约 1000-1800 行的 detail.md。这是大文件夹（6000+ 行），必须按工程模式聚类而非按文件聚类。重点捕获：subagent 生命周期、工具子集授权、isolation: worktree 机制、context 传递与隔离、并发限制、流式输出转发。",
+      "files": [],
+      "notes": "大文件夹（6072 行），策略 C，测试 skill 是否会偷懒"
+    }
+  ]
+}
